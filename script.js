@@ -10,9 +10,9 @@
 
 // variabili
 var prezzo = 0.21; //prezzo al km
-var percSconto;
-var sconto;
-var prezzoFinale;
+var percSconto = 0;
+var sconto = 0;
+var msgSconto = "";
 
 // chiedo all'utente di inserire chilometri ed età e li salvo in delle variabili
 var km = parseInt(prompt("inserisci i chilometri da percorrere"));
@@ -24,27 +24,34 @@ console.log("età = " + eta);
 // calcolo il prezzo del biglietto e lo memorizzo in una variabile
 var biglietto = km * prezzo;
 
-console.log("il biglietto costa " + biglietto + "€");
+console.log("il biglietto costa " + biglietto + " €");
 
-// controllo se l'eta è minore di 18 o maggiore di 65 e salvo questa informazione
+// controllo se l'eta è minore di 18 o maggiore di 65 e aggiorno la variabile percSconto di conseguenza
 if (eta < 18) {
   percSconto = 20;
 } else if (eta > 65) {
   percSconto = 40;
-} else {
-  percSconto = 0;
 }
 
-console.log("sconto = " + percSconto);
+console.log("sconto = " + percSconto + " %");
 
-// applico lo sconto (se è il caso) e visualizzo il prezzo del biglietto
+// calcolo il valore dello sconto e lo applico (se è il caso)
 if (percSconto != 0) {
   sconto = (biglietto / 100) * percSconto;
   biglietto = biglietto - sconto;
+  msgSconto = "<br>E' stato applicato uno sconto del " + percSconto + "%, pari a " + sconto.toFixed(2) + " €, al prezzo iniziale di " + (biglietto + sconto).toFixed(2) + " €.";
 }
 
-console.log("valore sconto = " + sconto + "€");
+console.log("valore sconto = " + sconto + " €");
 
-var msg = "Il prezzo del tuo biglietto è: " + biglietto;
+// visualizzo in pagina il prezzo finale del biglietto
+var msg = "Il prezzo del tuo biglietto è: " + biglietto.toFixed(2) + " €.";
 
-document.getElementById('txt').innerHTML = msg;
+document.getElementById('txt').innerHTML = msg + msgSconto;
+
+// visualizzo un messagio nel caso sia stato applicato uno sconto
+// if (percSconto != 0) {
+//   var msgSconto = "E' stato applicato uno sconto del " + percSconto + "%, pari a " + sconto.toFixed(2) + " €, al prezzo iniziale di " + (biglietto + sconto).toFixed(2) + " €.";
+//
+//   document.getElementById('txt-sconto').innerHTML = msgSconto;
+// }
