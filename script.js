@@ -15,8 +15,8 @@ var sconto = 0;
 var msgSconto = "";
 
 // chiedo all'utente di inserire chilometri ed età e li salvo in delle variabili
-var km = parseInt(prompt("inserisci i chilometri da percorrere"));
-var eta = parseInt(prompt("inserisci la tua età"));
+var km = parseInt(prompt("Inserisci i chilometri da percorrere"));
+var eta = parseInt(prompt("Inserisci la tua età"));
 
 console.log("km = " + km);
 console.log("età = " + eta);
@@ -39,6 +39,7 @@ console.log("sconto = " + percSconto + " %");
 if (percSconto != 0) {
   sconto = (biglietto / 100) * percSconto;
   biglietto = biglietto - sconto;
+  // creo un messaggio da visualizzare successivamente
   msgSconto = "<br>E' stato applicato uno sconto del " + percSconto + "%, pari a " + sconto.toFixed(2) + " €, al prezzo iniziale di " + (biglietto + sconto).toFixed(2) + " €.";
 }
 
@@ -48,10 +49,3 @@ console.log("valore sconto = " + sconto + " €");
 var msg = "Il prezzo del tuo biglietto è: " + biglietto.toFixed(2) + " €.";
 
 document.getElementById('txt').innerHTML = msg + msgSconto;
-
-// visualizzo un messagio nel caso sia stato applicato uno sconto
-// if (percSconto != 0) {
-//   var msgSconto = "E' stato applicato uno sconto del " + percSconto + "%, pari a " + sconto.toFixed(2) + " €, al prezzo iniziale di " + (biglietto + sconto).toFixed(2) + " €.";
-//
-//   document.getElementById('txt-sconto').innerHTML = msgSconto;
-// }
